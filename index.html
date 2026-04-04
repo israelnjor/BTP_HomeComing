@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Born TO PROPHESY Homecoming Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .header {
+            width: 100%;
+            height: 150px;
+            /* adjust height as needed */
+            background-image: url('PEA.jpeg');
+            /* replace with your image path */
+            background-size: cover;
+            /* makes image cover the full header */
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+            /* rounded top corners */
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            color: #fff;
+            /* white text on image */
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.4);
+            /* semi-transparent overlay for readability */
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .checkbox-container input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #6a1b9a;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4a148c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <!-- Full-width header with background image -->
+        <div class="header">
+            <h2>Born TO PROPHESY Homecoming</h2>
+        </div>
+
+        <form id="homecomingForm">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" required>
+
+            <label for="contact">Contact Number *</label>
+            <input type="tel" id="contact" required>
+
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" required>
+
+            <label for="country">Country *</label>
+            <select id="country" required>
+                <option value="">-- Select Country --</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <!-- add more countries as needed -->
+            </select>
+
+            <label for="days">Number of Days Staying *</label>
+            <input type="number" id="days" min="1" required>
+
+            <label for="accommodation">Need Accommodation? *</label>
+            <select id="accommodation" required>
+                <option value="">-- Select Option --</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="comments">Special Requests / Comments</label>
+            <textarea id="comments" rows="4" placeholder="Optional"></textarea>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">I agree to abide by church rules during the homecoming *</label>
+            </div>
+
+            <button type="submit">Submit Registration</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('homecomingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Registration submitted! (This is a prototype)');
+        });
+    </script>
+
+</body>
+
+</html>

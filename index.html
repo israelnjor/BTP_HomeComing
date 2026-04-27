@@ -7,7 +7,11 @@
     <title>Born TO PROPHESY Homecoming Registration</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <style>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+   
+   <style>
         body {
             font-family: Arial, sans-serif;
             background: #f6f0ff;
@@ -154,16 +158,11 @@
                 <label for="consent">I agree to abide by church rules during the homecoming *</label>
             </div>
 
-            <button type="submit">Submit Registration</button>
+            <button type="submit" id="submitBtn">Submit Registration</button>
         </form>
     </div>
 
-    <script>
-        document.getElementById('homecomingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Registration submitted! (This is a prototype)');
-        });
-    </script>
+<script type = "module" src="script.js"></script>
 
 </body>
 

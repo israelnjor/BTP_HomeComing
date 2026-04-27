@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Registrations</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #6a1b9a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #6a1b9a;
+    color: white;
+}
+
+tr:hover {
+    background: #f1f1f1;
+}
+
+.filter {
+    margin-top: 10px;
+}
+
+select {
+    padding: 8px;
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 1 200px;
+    background: #6a1b9a;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 28px;
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Registrations Dashboard</h2>
+
+    <div class="filter">
+        <label>Filter by Country:</label>
+        <select id="countryFilter">
+            <option value="all">All</option>
+        </select>
+    </div>
+    <div class="stats">
+        <div class="card">
+            <h3 id="total">0</h3>
+            <p>Total Registrations</p>
+        </div>
+
+        <div class="card">
+            <h3 id="accommodationCount">0</h3>
+            <p>Need Accommodation</p>
+        </div>
+
+        <div class="card">
+            <h3 id="countriesCount">0</h3>
+            <p>Countries</p>
+        </div>
+    </div>
+
+    <div style="overflow-x:auto;">
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>Days</th>
+                <th>Accommodation</th>
+                <th>TimeStamp</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

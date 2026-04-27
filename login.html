@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Login</title>
+
+<style>
+body {
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f6f9;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: #6a1b9a;
+    color: white;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h3>Admin Login</h3>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="loginBtn">Login</button>
+</div>
+
+<script type="module" src="login.js"></script>
+
+</body>
+</html>

@@ -64,38 +64,42 @@ select {
 }
 
 .card {
-    background: #6a1b9a;
-    color: white;
-    padding: 10px;
-    border-radius: 12px;
+    background: #f3e8ff; /* light purple instead of bold */
+    color: #4a148c;
+    padding: 12px;
+    border-radius: 10px;
     text-align: center;
-    min-height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: 70px;
+    font-size: 14px;
 }
 
 .card h3 {
     margin: 0;
-    font-size: 28px;
+    font-size: 20px;
+    font-weight: 600px;
 }
 @media (max-width: 768px) {
     .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr); /* still 3 in a row */
+        gap: 8px;
     }
 
     .card {
-        padding: 8px;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .card h3 {
+        font-size: 16px;
     }
 }
-
 @media (max-width: 600px) {
     h2 {
         font-size: 20px;
     }
 
     .card h3 {
-        font-size: 22px;
+        font-size: 16px;
     }
 
     th, td {

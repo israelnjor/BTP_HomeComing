@@ -3,111 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard - Registrations</title>
+<title>BTP ACCRA – Admin Dashboard</title>
+
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
-    margin: 0;
-    padding: 20px;
+:root {
+    --teal: #0d6b6b;
+    --teal-dark: #074f4f;
+    --orange: #e85c1a;
+    --gold: #c9a227;
+    --gold-lt: #e8c555;
+    --cream: #fdf8f0;
+    --white: #ffffff;
+    --text-dark: #0a2a2a;
+    --text-mid: #2d5a5a;
+    --border: #b5d8d8;
 }
 
-h2 {
-    text-align: center;
-    color: #6a1b9a;
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    margin: 0;
+    padding: 24px;
+    color: var(--text-dark);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: var(--white);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(7,79,79,0.15);
 }
 
-table {
+.dashboard-header {
+    background:
+        linear-gradient(135deg, rgba(88, 17, 77, 0.95), rgba(13,107,107,0.85)),
+        url('PEA.jpeg');
+    background-size: cover;
+    background-position: center top;
+    padding: 32px 24px;
+    color: var(--white);
+    text-align: center;
+}
+
+.logo-badge {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 4px rgba(232,197,85,0.35);
+}
+
+.logo-badge img {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    height: 100%;
+    object-fit: cover;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+.dashboard-header p {
+    margin: 0 0 6px;
+    color: var(--gold-lt);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
-th {
-    background: #6a1b9a;
-    color: white;
+.dashboard-header h2 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    line-height: 1.1;
 }
 
-tr:hover {
-    background: #f1f1f1;
+.dashboard-header span { color: var(--gold-lt); }
+
+.content { padding: 22px; }
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .filter {
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filter label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-mid);
 }
 
 select {
-    padding: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: #f5fafa;
+    color: var(--text-dark);
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+}
+
+select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(13,107,107,0.12);
 }
 
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 10px;
+    gap: 12px;
+    margin: 16px 0;
 }
 
 .card {
-    background: #f3e8ff; /* light purple instead of bold */
-    color: #4a148c;
-    padding: 12px;
-    border-radius: 10px;
-    text-align: center;
-    min-height: 70px;
-    font-size: 14px;
+    background: #f5fafa;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    color: var(--text-dark);
+    padding: 13px 12px;
+    border-radius: 14px;
+    min-height: 76px;
 }
+
+.card:nth-child(2) { border-left-color: var(--orange); }
+.card:nth-child(3) { border-left-color: var(--gold); }
 
 .card h3 {
     margin: 0;
-    font-size: 20px;
-    font-weight: 600px;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--teal-dark);
 }
+
+.card p {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: var(--text-mid);
+    font-weight: 600;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+}
+
+th, td {
+    padding: 13px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e4eeee;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+th {
+    background: var(--teal-dark);
+    color: var(--white);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.comment-cell {
+    max-width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+tr:hover { background: #f8fcfc; }
+
+td { color: var(--text-dark); }
+
+.footer-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-mid);
+    opacity: 0.75;
+}
+
 @media (max-width: 768px) {
+    body { padding: 12px; }
+
+    .dashboard-header { padding: 26px 18px; }
+
+    .dashboard-header h2 { font-size: 25px; }
+
+    .content { padding: 16px; }
+
     .stats {
-        grid-template-columns: repeat(3, 1fr); /* still 3 in a row */
+        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
     }
 
     .card {
-        padding: 10px;
-        font-size: 12px;
+        padding: 10px 8px;
+        min-height: 66px;
     }
 
-    .card h3 {
-        font-size: 16px;
-    }
-}
-@media (max-width: 600px) {
-    h2 {
-        font-size: 20px;
+    .card h3 { font-size: 17px; }
+
+    .card p { font-size: 10.5px; }
+
+    .filter {
+        width: 100%;
+        justify-content: space-between;
     }
 
-    .card h3 {
-        font-size: 16px;
+    .filter select {
+        flex: 1;
     }
 
     th, td {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 13px;
+        padding: 10px;
     }
 }
 </style>
@@ -116,46 +258,87 @@ select {
 <body>
 
 <div class="container">
-    <h2>Registrations Dashboard</h2>
 
-    <div class="filter">
-        <label>Filter by Country:</label>
-        <select id="countryFilter">
-            <option value="all">All</option>
-        </select>
-    </div>
-    <div class="stats">
-        <div class="card">
-            <h3 id="total">0</h3>
-            <p>Total Registrations</p>
+    <div class="dashboard-header">
+        <div class="logo-badge">
+            <img src="logo.png" alt="BTP Logo">
         </div>
-
-        <div class="card">
-            <h3 id="accommodationCount">0</h3>
-            <p>Need Accommodation</p>
-        </div>
-
-        <div class="card">
-            <h3 id="countriesCount">0</h3>
-            <p>Countries</p>
-        </div>
+        <p>Born To Prophesy · Accra</p>
+        <h2>Home<span>Coming</span><br>Admin Dashboard</h2>
     </div>
 
-    <div style="overflow-x:auto;">
-    <table id="dataTable">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Email</th>
-                <th>Country</th>
-                <th>Days</th>
-                <th>Accommodation</th>
-                <th>TimeStamp</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="content">
+
+        <div class="top-bar">
+            <div class="filter-group">
+                <div class="filter">
+                    <label>Country:</label>
+                    <select id="countryFilter">
+                        <option value="all">All</option>
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <label>Accommodation:</label>
+                    <select id="accommodationFilter">
+                        <option value="all">All</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <label>Meal Plan:</label>
+                    <select id="mealPlanFilter">
+                        <option value="all">All</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="card">
+                <h3 id="total">0</h3>
+                <p>Total Registrations</p>
+            </div>
+
+            <div class="card">
+                <h3 id="accommodationCount">0</h3>
+                <p>Need Accommodation</p>
+            </div>
+
+            <div class="card">
+                <h3 id="mealPlanCount">0</h3>
+                <p>Need Meal Plan</p>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>Accommodation</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Days</th>
+                        <th>Meal Plan</th>
+                        <th>Meals</th>
+                        <th>Comments</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <p class="footer-note">Live registration records for BTP ACCRA HomeComing 2026</p>
+
     </div>
 </div>
 

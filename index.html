@@ -1,169 +1,719 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Born TO PROPHESY Homecoming Registration</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-   
-   <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f6f0ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTP ACCRA – HomeComing 2026</title>
 
-        .form-container {
-            background: #fff;
-            padding: 25px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-        }
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
-        .header {
-            width: 100%;
-            height: 150px;
-            /* adjust height as needed */
-            background-image: url('PEA.jpeg');
-            /* replace with your image path */
-            background-size: cover;
-            /* makes image cover the full header */
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 12px 12px 0 0;
-            /* rounded top corners */
-            margin-bottom: 20px;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        .header h2 {
-            color: #fff;
-            /* white text on image */
-            font-size: 24px;
-            background: linear-gradient(rgba(237, 115, 219, 0.724), rgba(26, 1, 22, 0.4));
-            /* semi-transparent overlay for readability */
-            padding: 10px 20px;
-            border-radius: 8px;
-        }
+<style>
+:root {
+    --teal:#0d6b6b;
+    --teal-dark:#074f4f;
+    --orange:#e85c1a;
+    --gold:#c9a227;
+    --gold-lt:#e8c555;
+    --cream:#fdf8f0;
+    --white:#ffffff;
+    --text-dark:#0a2a2a;
+    --text-mid:#2d5a5a;
+    --border:#b5d8d8;
+}
 
+*, *::before, *::after {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+body {
+    font-family:'DM Sans', sans-serif;
+    background:var(--cream);
+    min-height:100vh;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction:column;
+    overflow-x:hidden;
+}
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
+body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(13,107,107,0.18), transparent 60%),
+        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(232,92,26,0.12), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 60% 20%, rgba(201,162,39,0.10), transparent 50%);
+    z-index:0;
+}
 
-        textarea {
-            resize: vertical;
-        }
+.page-wrapper {
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:560px;
+    padding:30px 16px 60px;
+}
 
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-        }
+/* HERO */
+.hero {
+    position:relative;
+    width:100%;
+    min-height:210px;
+    border-radius:20px 20px 0 0;
+    overflow:hidden;
+    background:var(--teal-dark);
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-direction:column;
+    padding-bottom:28px;
+}
 
-        .checkbox-container input {
-            width: auto;
-            margin-right: 10px;
-        }
+.hero-bg {
+    position:absolute;
+    inset:0;
+    background-image:url('PEA1.jpeg');
+    background-size:cover;
+    background-position:center top;
+    opacity:0.55;
+}
 
-        button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px;
-            background-color: #6a1b9a;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.hero::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        160deg,
+        rgba(7,79,79,0.55),
+        rgba(13,107,107,0.25),
+        rgba(232,92,26,0.20),
+        rgba(201,162,39,0.30)
+    );
+}
 
-        button:hover {
-            background-color: #4a148c;
-        }
-    </style>
+.hero-content {
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:0 20px;
+}
+
+.logo-badge {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    overflow:hidden;
+    margin:0 auto 12px;
+    box-shadow:0 0 0 4px rgba(201,162,39,0.35), 0 6px 24px rgba(0,0,0,0.4);
+}
+
+.logo-badge img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-eyebrow {
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold-lt);
+    margin-bottom:6px;
+}
+
+.hero-title {
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    font-weight:900;
+    color:var(--white);
+    line-height:1.15;
+    text-shadow:0 2px 12px rgba(0,0,0,0.4);
+}
+
+.hero-title span {
+    color:var(--gold-lt);
+}
+
+.hero-sub {
+    font-size:13px;
+    color:rgba(255,255,255,0.75);
+    margin-top:6px;
+}
+
+.date-pill {
+    display:inline-block;
+    margin-top:14px;
+    padding:5px 18px;
+    background:var(--orange);
+    color:var(--white);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border-radius:999px;
+}
+
+.accent-stripe {
+    height:4px;
+    background:linear-gradient(90deg, var(--teal), var(--gold), var(--orange));
+}
+
+/* PROGRESS */
+.progress-wrap {
+    background:var(--white);
+    padding:22px 28px 4px;
+}
+
+.progress-steps {
+    display:flex;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.step-item {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+}
+
+.step-item:not(:last-child)::after {
+    content:'';
+    position:absolute;
+    top:17px;
+    left:calc(50% + 17px);
+    right:calc(-50% + 17px);
+    height:2px;
+    background:var(--border);
+}
+
+.step-item.done:not(:last-child)::after {
+    background:var(--teal);
+}
+
+.step-circle {
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:2px solid var(--border);
+    background:var(--white);
+    color:var(--text-mid);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:700;
+    position:relative;
+    z-index:1;
+}
+
+.step-item.active .step-circle,
+.step-item.done .step-circle {
+    border-color:var(--teal);
+    background:var(--teal);
+    color:var(--white);
+}
+
+.step-label {
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--text-mid);
+    margin-top:7px;
+    opacity:0.45;
+}
+
+.step-item.active .step-label,
+.step-item.done .step-label {
+    opacity:1;
+    color:var(--teal);
+}
+
+/* FORM */
+.form-card {
+    background:var(--white);
+    border-radius:0 0 20px 20px;
+    padding:0 28px 36px;
+    box-shadow:0 20px 60px rgba(7,79,79,0.15), 0 4px 16px rgba(0,0,0,0.07);
+}
+
+.form-step {
+    display:none;
+}
+
+.form-step.active {
+    display:block;
+}
+
+.step-heading {
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin:28px 0 6px;
+}
+
+.step-desc {
+    font-size:13px;
+    color:var(--text-mid);
+    margin-bottom:22px;
+    line-height:1.55;
+}
+
+.field-group {
+    margin-bottom:16px;
+}
+
+label {
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--text-dark);
+    margin-bottom:6px;
+}
+
+.req {
+    color:var(--orange);
+}
+
+input:not([type="checkbox"]), select, textarea {
+    width:100%;
+    padding:11px 14px;
+    border-radius:10px;
+    border:1.5px solid var(--border);
+    font-family:'DM Sans', sans-serif;
+    font-size:15px;
+    color:var(--text-dark);
+    background:#f5fafa;
+    outline:none;
+    appearance:none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color:var(--teal);
+    background:var(--white);
+    box-shadow:0 0 0 3px rgba(13,107,107,0.12);
+}
+
+textarea {
+    resize:vertical;
+    min-height:90px;
+}
+
+.field-row {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.meal-options {
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
+    background:rgba(13,107,107,0.05);
+    border:1.5px solid var(--border);
+    border-radius:10px;
+    padding:14px;
+}
+
+.meal-options label {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:500;
+    color:var(--text-mid);
+    margin:0;
+}
+
+.meal-options input[type="checkbox"] {
+    width:16px;
+    height:16px;
+    accent-color:var(--teal);
+}
+
+.consent-wrap {
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    background:rgba(13,107,107,0.05);
+    border:1.5px solid var(--border);
+    border-radius:10px;
+    padding:14px;
+    margin-top:8px;
+}
+
+.consent-wrap input[type="checkbox"] {
+    width:18px;
+    height:18px;
+    min-width:18px;
+    accent-color:var(--teal);
+    cursor:pointer;
+    margin-top:2px;
+}
+
+.consent-wrap label {
+    font-size:13px;
+    font-weight:400;
+    color:var(--text-mid);
+    margin:0;
+    line-height:1.5;
+}
+
+.btn-row {
+    display:flex;
+    gap:12px;
+    margin-top:24px;
+}
+
+.btn {
+    flex:1;
+    padding:14px;
+    border-radius:12px;
+    font-family:'DM Sans', sans-serif;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    border:none;
+}
+
+.btn-back {
+    background:var(--white);
+    color:var(--teal);
+    border:2px solid var(--border);
+    flex:0 0 52px;
+}
+
+.btn-next,
+.btn-submit {
+    background:linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color:var(--white);
+    box-shadow:0 8px 24px rgba(7,79,79,0.35);
+}
+
+.btn:disabled {
+    opacity:0.7;
+    cursor:not-allowed;
+}
+
+.footer-note {
+    text-align:center;
+    font-size:12px;
+    color:var(--text-mid);
+    margin-top:20px;
+    opacity:0.7;
+}
+
+@media (max-width:480px) {
+    .hero {
+        min-height:185px;
+    }
+
+    .hero-title {
+        font-size:22px;
+    }
+
+    .form-card {
+        padding:0 18px 28px;
+    }
+
+    .progress-wrap {
+        padding:18px 18px 4px;
+    }
+
+    .field-row {
+        grid-template-columns:1fr;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="form-container">
-        <!-- Full-width header with background image -->
-        <div class="header">
-            <h2>Born TO PROPHESY HomeComing</h2>
-        </div>
+<div class="page-wrapper">
 
-        <form id="homecomingForm">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" required>
-
-            <label for="contact">Contact Number *</label>
-            <input type="tel" id="contact" required>
-
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" required>
-
-            <label for="country">Country *</label>
-            <select id="country" required>
-                <option value="">-- Select Country --</option>
-                <option value="Ghana">Ghana</option>
-                <option value="Nigeria">Nigeria</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Canada">Canada</option>
-                <option value = "France">France</option>
-                <!-- add more countries as needed -->
-            </select>
-
-            <label for="days">Number of Days Staying *</label>
-            <input type="number" id="days" min="1" required>
-
-            <label for="accommodation">Need Accommodation? *</label>
-            <select id="accommodation" required>
-                <option value="">-- Select Option --</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-
-            <label for="comments">Special Requests / Comments</label>
-            <textarea id="comments" rows="4" placeholder="Optional"></textarea>
-
-            <div class="checkbox-container">
-                <input type="checkbox" id="consent" required>
-                <label for="consent">I agree to abide by church rules during the homecoming *</label>
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="logo-badge">
+                <img src="logo.png" alt="BTP Logo">
             </div>
-
-            <button type="submit" id="submitBtn">Submit Registration</button>
-        </form>
+            <p class="hero-eyebrow">Born To Prophesy · Accra</p>
+            <h1 class="hero-title">Home<span>Coming</span><br>Registration</h1>
+            <p class="hero-sub">with Prophet Emmanuel</p>
+            <span class="date-pill">August 2026</span>
+        </div>
     </div>
 
-<script type = "module" src="script.js"></script>
+    <div class="accent-stripe"></div>
 
+    <div class="progress-wrap">
+        <div class="progress-steps">
+            <div class="step-item active" id="step-indicator-1">
+                <div class="step-circle">1</div>
+                <span class="step-label">Personal Info</span>
+            </div>
+
+            <div class="step-item" id="step-indicator-2">
+                <div class="step-circle">2</div>
+                <span class="step-label">Final Details</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form id="homecomingForm">
+
+            <div class="form-step active" id="form-step-1">
+                <p class="step-heading">Personal Information</p>
+                <p class="step-desc">Let’s start with your details. Fields marked <span class="req">*</span> are required.</p>
+
+                <div class="field-group">
+                    <label for="name">Full Name <span class="req">*</span></label>
+                    <input type="text" id="name" placeholder="e.g. Abena Mensah" required>
+                </div>
+
+                <div class="field-group">
+                    <label for="contact">Contact Number <span class="req">*</span></label>
+                    <input type="tel" id="contact" placeholder="+233 XX XXX XXXX" required>
+                </div>
+
+                <div class="field-group">
+                    <label for="email">Email Address <span class="req">*</span></label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="field-group">
+                    <label for="country">Country <span class="req">*</span></label>
+                    <select id="country" required>
+                        <option value="">— Select Country —</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="Canada">Canada</option>
+                        <option value="France">France</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label for="accommodation">Do you require accommodation? <span class="req">*</span></label>
+                    <select id="accommodation" required>
+                        <option value="">— Select —</option>
+                        <option value="Yes">Yes, I require accommodation</option>
+                        <option value="No">No, I do not require accommodation</option>
+                    </select>
+                </div>
+
+                <div class="btn-row">
+                    <button type="button" class="btn btn-next" id="nextBtn">Next — Final Details →</button>
+                </div>
+            </div>
+
+            <div class="form-step" id="form-step-2">
+                <p class="step-heading">Final Details</p>
+                <p class="step-desc" id="step2Desc">Kindly complete the final details below.</p>
+
+                <div id="accommodationDetails" style="display:none;">
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="checkInDate">Check-in Date <span class="req">*</span></label>
+                            <input type="date" id="checkInDate">
+                        </div>
+
+                        <div class="field-group">
+                            <label for="checkOutDate">Check-out Date <span class="req">*</span></label>
+                            <input type="date" id="checkOutDate">
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="mealPlanRequired">Require Meal Plan? <span class="req">*</span></label>
+                        <select id="mealPlanRequired">
+                            <option value="">— Select —</option>
+                            <option value="Yes">Yes, I require a meal plan</option>
+                            <option value="No">No, I do not require a meal plan</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group" id="mealOptionsWrap" style="display:none;">
+                        <label>Meal Options</label>
+
+                        <div class="meal-options">
+                            <label><input type="checkbox" value="Breakfast" class="meal-option"> Breakfast</label>
+                            <label><input type="checkbox" value="Lunch" class="meal-option"> Lunch</label>
+                            <label><input type="checkbox" value="Dinner" class="meal-option"> Dinner</label>
+                            <label><input type="checkbox" value="All" class="meal-option"> All</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="field-group" id="commentsWrap">
+                    <label for="comments">Special Requests / Comments</label>
+                    <textarea id="comments" placeholder="Optional – special requests, accessibility needs, notes, etc."></textarea>
+                </div>
+
+                <div class="consent-wrap">
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent">
+                        I agree to abide by church rules and guidelines throughout the HomeComing event.
+                        <span class="req">*</span>
+                    </label>
+                </div>
+
+                <div class="btn-row">
+                    <button type="button" class="btn btn-back" id="backBtn">←</button>
+                    <button type="submit" id="submitBtn" class="btn btn-submit">Submit Registration ✓</button>
+                </div>
+
+                <p class="footer-note">Your information is handled with care and used only for this event.</p>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+const nextBtn = document.getElementById("nextBtn");
+const backBtn = document.getElementById("backBtn");
+
+const step1 = document.getElementById("form-step-1");
+const step2 = document.getElementById("form-step-2");
+
+const ind1 = document.getElementById("step-indicator-1");
+const ind2 = document.getElementById("step-indicator-2");
+
+const accommodation = document.getElementById("accommodation");
+const accommodationDetails = document.getElementById("accommodationDetails");
+const step2Desc = document.getElementById("step2Desc");
+
+const checkInDate = document.getElementById("checkInDate");
+const checkOutDate = document.getElementById("checkOutDate");
+const mealPlanRequired = document.getElementById("mealPlanRequired");
+const mealOptionsWrap = document.getElementById("mealOptionsWrap");
+
+const commentsWrap = document.getElementById("commentsWrap");
+const comments = document.getElementById("comments");
+
+const step1Fields = ["name", "contact", "email", "country", "accommodation"];
+
+function showStep2() {
+    step1.classList.remove("active");
+    step2.classList.add("active");
+
+    ind1.classList.remove("active");
+    ind1.classList.add("done");
+    ind2.classList.add("active");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showStep1() {
+    step2.classList.remove("active");
+    step1.classList.add("active");
+
+    ind2.classList.remove("active");
+    ind1.classList.remove("done");
+    ind1.classList.add("active");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function resetAccommodationFields() {
+    checkInDate.required = false;
+    checkOutDate.required = false;
+    mealPlanRequired.required = false;
+
+    checkInDate.value = "";
+    checkOutDate.value = "";
+    mealPlanRequired.value = "";
+
+    mealOptionsWrap.style.display = "none";
+
+    document.querySelectorAll(".meal-option").forEach(option => {
+        option.checked = false;
+    });
+}
+
+function setupStep2ByAccommodation() {
+    if (accommodation.value === "Yes") {
+        accommodationDetails.style.display = "block";
+        step2Desc.textContent = "Please provide your accommodation and meal plan details.";
+       
+        commentsWrap.style.display = "block";
+
+        checkInDate.required = true;
+        checkOutDate.required = true;
+        mealPlanRequired.required = true;
+    } else {
+        accommodationDetails.style.display = "none";
+        step2Desc.textContent = "No accommodation required. Kindly complete the final details below.";
+        commentsWrap.style.display = "none";
+        comments.value = "";
+        
+        resetAccommodationFields();
+    }
+}
+
+function validateStep1() {
+    let valid = true;
+
+    step1Fields.forEach(id => {
+        const el = document.getElementById(id);
+
+        if (!el.value.trim()) {
+            el.style.borderColor = "var(--orange)";
+            el.style.boxShadow = "0 0 0 3px rgba(232,92,26,0.15)";
+            valid = false;
+
+            el.addEventListener("input", () => {
+                el.style.borderColor = "";
+                el.style.boxShadow = "";
+            }, { once: true });
+
+            el.addEventListener("change", () => {
+                el.style.borderColor = "";
+                el.style.boxShadow = "";
+            }, { once: true });
+        }
+    });
+
+    return valid;
+}
+
+nextBtn.addEventListener("click", () => {
+    if (!validateStep1()) return;
+
+    setupStep2ByAccommodation();
+    showStep2();
+});
+
+backBtn.addEventListener("click", showStep1);
+
+mealPlanRequired.addEventListener("change", () => {
+    if (mealPlanRequired.value === "Yes") {
+        mealOptionsWrap.style.display = "block";
+    } else {
+        mealOptionsWrap.style.display = "none";
+
+        document.querySelectorAll(".meal-option").forEach(option => {
+            option.checked = false;
+        });
+    }
+});
+</script>
+
+<script type="module" src="script.js"></script>
 </body>
-
 </html>

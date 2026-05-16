@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BTP ACCRA – HomeComing 2026</title>
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -10,87 +11,87 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --teal:#0d6b6b;
-    --teal-dark:#074f4f;
-    --orange:#e85c1a;
-    --gold:#c9a227;
-    --gold-lt:#e8c555;
-    --cream:#fdf8f0;
-    --white:#ffffff;
-    --text-dark:#0a2a2a;
-    --text-mid:#2d5a5a;
-    --border:#b5d8d8;
+    --teal: #0d6b6b;
+    --teal-dark: #074f4f;
+    --orange: #e85c1a;
+    --gold: #c9a227;
+    --gold-lt: #e8c555;
+    --cream: #fdf8f0;
+    --white: #ffffff;
+    --text-dark: #0a2a2a;
+    --text-mid: #2d5a5a;
+    --border: #b5d8d8;
 }
 
 *, *::before, *::after {
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family:'DM Sans', sans-serif;
-    background:var(--cream);
-    min-height:100vh;
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-    flex-direction:column;
-    overflow-x:hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
 }
 
 body::before {
-    content:'';
-    position:fixed;
-    inset:0;
+    content: '';
+    position: fixed;
+    inset: 0;
     background:
         radial-gradient(ellipse 80% 60% at 15% 10%, rgba(13,107,107,0.18), transparent 60%),
         radial-gradient(ellipse 60% 80% at 90% 80%, rgba(232,92,26,0.12), transparent 55%),
         radial-gradient(ellipse 50% 40% at 60% 20%, rgba(201,162,39,0.10), transparent 50%);
-    z-index:0;
+    z-index: 0;
 }
 
 .page-wrapper {
-    position:relative;
-    z-index:1;
-    width:100%;
-    max-width:560px;
-    padding:30px 16px 60px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 560px;
+    padding: 30px 16px 60px;
 }
 
 /* HERO */
 .hero {
-    position:relative;
-    width:100%;
-    min-height:210px;
-    border-radius:20px 20px 0 0;
-    overflow:hidden;
-    background:var(--teal-dark);
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    flex-direction:column;
-    padding-bottom:28px;
+    position: relative;
+    width: 100%;
+    min-height: 210px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    background: var(--teal-dark);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-bottom: 28px;
 }
 
 .hero-bg {
-    position:absolute;
-    inset:0;
-    background-image:url('PEA1.jpeg');
-    background-size:cover;
-    background-position:center top;
-    opacity:0.55;
+    position: absolute;
+    inset: 0;
+    background-image: url('PEA1.jpeg');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.55;
 }
 
 .hero::after {
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
         160deg,
         rgba(7,79,79,0.55),
         rgba(13,107,107,0.25),
@@ -100,338 +101,338 @@ body::before {
 }
 
 .hero-content {
-    position:relative;
-    z-index:2;
-    text-align:center;
-    padding:0 20px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
 }
 
 .logo-badge {
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    overflow:hidden;
-    margin:0 auto 12px;
-    box-shadow:0 0 0 4px rgba(201,162,39,0.35), 0 6px 24px rgba(0,0,0,0.4);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 12px;
+    box-shadow: 0 0 0 4px rgba(201,162,39,0.35), 0 6px 24px rgba(0,0,0,0.4);
 }
 
 .logo-badge img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-eyebrow {
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:var(--gold-lt);
-    margin-bottom:6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 6px;
 }
 
 .hero-title {
-    font-family:'Playfair Display', serif;
-    font-size:28px;
-    font-weight:900;
-    color:var(--white);
-    line-height:1.15;
-    text-shadow:0 2px 12px rgba(0,0,0,0.4);
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 
 .hero-title span {
-    color:var(--gold-lt);
+    color: var(--gold-lt);
 }
 
 .hero-sub {
-    font-size:13px;
-    color:rgba(255,255,255,0.75);
-    margin-top:6px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 6px;
 }
 
 .date-pill {
-    display:inline-block;
-    margin-top:14px;
-    padding:5px 18px;
-    background:var(--orange);
-    color:var(--white);
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    border-radius:999px;
+    display: inline-block;
+    margin-top: 14px;
+    padding: 5px 18px;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 999px;
 }
 
 .accent-stripe {
-    height:4px;
-    background:linear-gradient(90deg, var(--teal), var(--gold), var(--orange));
+    height: 4px;
+    background: linear-gradient(90deg, var(--teal), var(--gold), var(--orange));
 }
 
 /* PROGRESS */
 .progress-wrap {
-    background:var(--white);
-    padding:22px 28px 4px;
+    background: var(--white);
+    padding: 22px 28px 4px;
 }
 
 .progress-steps {
-    display:flex;
-    align-items:flex-start;
-    margin-bottom:20px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
 .step-item {
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    position:relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 .step-item:not(:last-child)::after {
-    content:'';
-    position:absolute;
-    top:17px;
-    left:calc(50% + 17px);
-    right:calc(-50% + 17px);
-    height:2px;
-    background:var(--border);
+    content: '';
+    position: absolute;
+    top: 17px;
+    left: calc(50% + 17px);
+    right: calc(-50% + 17px);
+    height: 2px;
+    background: var(--border);
 }
 
 .step-item.done:not(:last-child)::after {
-    background:var(--teal);
+    background: var(--teal);
 }
 
 .step-circle {
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    border:2px solid var(--border);
-    background:var(--white);
-    color:var(--text-mid);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:13px;
-    font-weight:700;
-    position:relative;
-    z-index:1;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
 }
 
 .step-item.active .step-circle,
 .step-item.done .step-circle {
-    border-color:var(--teal);
-    background:var(--teal);
-    color:var(--white);
+    border-color: var(--teal);
+    background: var(--teal);
+    color: var(--white);
 }
 
 .step-label {
-    font-size:10.5px;
-    font-weight:600;
-    color:var(--text-mid);
-    margin-top:7px;
-    opacity:0.45;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-top: 7px;
+    opacity: 0.45;
 }
 
 .step-item.active .step-label,
 .step-item.done .step-label {
-    opacity:1;
-    color:var(--teal);
+    opacity: 1;
+    color: var(--teal);
 }
 
 /* FORM */
 .form-card {
-    background:var(--white);
-    border-radius:0 0 20px 20px;
-    padding:0 28px 36px;
-    box-shadow:0 20px 60px rgba(7,79,79,0.15), 0 4px 16px rgba(0,0,0,0.07);
+    background: var(--white);
+    border-radius: 0 0 20px 20px;
+    padding: 0 28px 36px;
+    box-shadow: 0 20px 60px rgba(7,79,79,0.15), 0 4px 16px rgba(0,0,0,0.07);
 }
 
 .form-step {
-    display:none;
+    display: none;
 }
 
 .form-step.active {
-    display:block;
+    display: block;
 }
 
 .step-heading {
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:2.5px;
-    text-transform:uppercase;
-    color:var(--teal);
-    margin:28px 0 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 28px 0 6px;
 }
 
 .step-desc {
-    font-size:13px;
-    color:var(--text-mid);
-    margin-bottom:22px;
-    line-height:1.55;
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 22px;
+    line-height: 1.55;
 }
 
 .field-group {
-    margin-bottom:16px;
+    margin-bottom: 16px;
 }
 
 label {
-    display:block;
-    font-size:12.5px;
-    font-weight:600;
-    color:var(--text-dark);
-    margin-bottom:6px;
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
 }
 
 .req {
-    color:var(--orange);
+    color: var(--orange);
 }
 
 input:not([type="checkbox"]), select, textarea {
-    width:100%;
-    padding:11px 14px;
-    border-radius:10px;
-    border:1.5px solid var(--border);
-    font-family:'DM Sans', sans-serif;
-    font-size:15px;
-    color:var(--text-dark);
-    background:#f5fafa;
-    outline:none;
-    appearance:none;
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: #f5fafa;
+    outline: none;
+    appearance: none;
 }
 
 input:focus, select:focus, textarea:focus {
-    border-color:var(--teal);
-    background:var(--white);
-    box-shadow:0 0 0 3px rgba(13,107,107,0.12);
+    border-color: var(--teal);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(13,107,107,0.12);
 }
 
 textarea {
-    resize:vertical;
-    min-height:90px;
+    resize: vertical;
+    min-height: 90px;
 }
 
 .field-row {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
 }
 
 .meal-options {
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:10px;
-    background:rgba(13,107,107,0.05);
-    border:1.5px solid var(--border);
-    border-radius:10px;
-    padding:14px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    background: rgba(13,107,107,0.05);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
 }
 
 .meal-options label {
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-weight:500;
-    color:var(--text-mid);
-    margin:0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--text-mid);
+    margin: 0;
 }
 
 .meal-options input[type="checkbox"] {
-    width:16px;
-    height:16px;
-    accent-color:var(--teal);
+    width: 16px;
+    height: 16px;
+    accent-color: var(--teal);
 }
 
 .consent-wrap {
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    background:rgba(13,107,107,0.05);
-    border:1.5px solid var(--border);
-    border-radius:10px;
-    padding:14px;
-    margin-top:8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(13,107,107,0.05);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 8px;
 }
 
 .consent-wrap input[type="checkbox"] {
-    width:18px;
-    height:18px;
-    min-width:18px;
-    accent-color:var(--teal);
-    cursor:pointer;
-    margin-top:2px;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    accent-color: var(--teal);
+    cursor: pointer;
+    margin-top: 2px;
 }
 
 .consent-wrap label {
-    font-size:13px;
-    font-weight:400;
-    color:var(--text-mid);
-    margin:0;
-    line-height:1.5;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-mid);
+    margin: 0;
+    line-height: 1.5;
 }
 
 .btn-row {
-    display:flex;
-    gap:12px;
-    margin-top:24px;
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .btn {
-    flex:1;
-    padding:14px;
-    border-radius:12px;
-    font-family:'DM Sans', sans-serif;
-    font-size:15px;
-    font-weight:700;
-    cursor:pointer;
-    border:none;
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
 }
 
 .btn-back {
-    background:var(--white);
-    color:var(--teal);
-    border:2px solid var(--border);
-    flex:0 0 52px;
+    background: var(--white);
+    color: var(--teal);
+    border: 2px solid var(--border);
+    flex: 0 0 52px;
 }
 
 .btn-next,
 .btn-submit {
-    background:linear-gradient(135deg, var(--teal), var(--teal-dark));
-    color:var(--white);
-    box-shadow:0 8px 24px rgba(7,79,79,0.35);
+    background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color: var(--white);
+    box-shadow: 0 8px 24px rgba(7,79,79,0.35);
 }
 
 .btn:disabled {
-    opacity:0.7;
-    cursor:not-allowed;
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
 .footer-note {
-    text-align:center;
-    font-size:12px;
-    color:var(--text-mid);
-    margin-top:20px;
-    opacity:0.7;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 20px;
+    opacity: 0.7;
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
     .hero {
-        min-height:185px;
+        min-height: 185px;
     }
 
     .hero-title {
-        font-size:22px;
+        font-size: 22px;
     }
 
     .form-card {
-        padding:0 18px 28px;
+        padding: 0 18px 28px;
     }
 
     .progress-wrap {
-        padding:18px 18px 4px;
+        padding: 18px 18px 4px;
     }
 
     .field-row {
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
     }
 }
 </style>
@@ -473,13 +474,23 @@ textarea {
     <div class="form-card">
         <form id="homecomingForm">
 
+            <!-- STEP 1 -->
             <div class="form-step active" id="form-step-1">
                 <p class="step-heading">Personal Information</p>
-                <p class="step-desc">Let’s start with your details. Fields marked <span class="req">*</span> are required.</p>
+                <p class="step-desc">
+                    Let’s start with your details. Fields marked <span class="req">*</span> are required.
+                </p>
 
-                <div class="field-group">
-                    <label for="name">Full Name <span class="req">*</span></label>
-                    <input type="text" id="name" placeholder="e.g. Abena Mensah" required>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label for="firstName">First Name <span class="req">*</span></label>
+                        <input type="text" id="firstName" placeholder="e.g. Abena" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="lastName">Last Name <span class="req">*</span></label>
+                        <input type="text" id="lastName" placeholder="e.g. Mensah" required>
+                    </div>
                 </div>
 
                 <div class="field-group">
@@ -489,26 +500,20 @@ textarea {
 
                 <div class="field-group">
                     <label for="email">Email Address <span class="req">*</span></label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
+                    <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
                 </div>
 
                 <div class="field-group">
-                    <label for="country">Country <span class="req">*</span></label>
+                    <label for="country">Country Of Residence <span class="req">*</span></label>
                     <select id="country" required>
-                        <option value="">— Select Country —</option>
-                        <option value="Ghana">Ghana</option>
-                        <option value="Nigeria">Nigeria</option>
-                        <option value="USA">USA</option>
-                        <option value="UK">UK</option>
-                        <option value="Canada">Canada</option>
-                        <option value="France">France</option>
+                        <option value="">Select Country</option>
                     </select>
                 </div>
 
                 <div class="field-group">
                     <label for="accommodation">Do you require accommodation? <span class="req">*</span></label>
                     <select id="accommodation" required>
-                        <option value="">— Select —</option>
+                        <option value=""> Select </option>
                         <option value="Yes">Yes, I require accommodation</option>
                         <option value="No">No, I do not require accommodation</option>
                     </select>
@@ -519,6 +524,7 @@ textarea {
                 </div>
             </div>
 
+            <!-- STEP 2 -->
             <div class="form-step" id="form-step-2">
                 <p class="step-heading">Final Details</p>
                 <p class="step-desc" id="step2Desc">Kindly complete the final details below.</p>
@@ -557,11 +563,11 @@ textarea {
                         </div>
                     </div>
 
-                </div>
+                    <div class="field-group" id="commentsWrap">
+                        <label for="comments">Special Requests / Comments</label>
+                        <textarea id="comments" placeholder="Optional – special requests, accessibility needs, notes, etc."></textarea>
+                    </div>
 
-                <div class="field-group" id="commentsWrap">
-                    <label for="comments">Special Requests / Comments</label>
-                    <textarea id="comments" placeholder="Optional – special requests, accessibility needs, notes, etc."></textarea>
                 </div>
 
                 <div class="consent-wrap">
@@ -606,7 +612,14 @@ const mealOptionsWrap = document.getElementById("mealOptionsWrap");
 const commentsWrap = document.getElementById("commentsWrap");
 const comments = document.getElementById("comments");
 
-const step1Fields = ["name", "contact", "email", "country", "accommodation"];
+const step1Fields = [
+    "firstName",
+    "lastName",
+    "contact",
+    "email",
+    "country",
+    "accommodation"
+];
 
 function showStep2() {
     step1.classList.remove("active");
@@ -644,24 +657,24 @@ function resetAccommodationFields() {
     document.querySelectorAll(".meal-option").forEach(option => {
         option.checked = false;
     });
+
+    comments.value = "";
 }
 
 function setupStep2ByAccommodation() {
     if (accommodation.value === "Yes") {
         accommodationDetails.style.display = "block";
         step2Desc.textContent = "Please provide your accommodation and meal plan details.";
-       
-        commentsWrap.style.display = "block";
 
         checkInDate.required = true;
         checkOutDate.required = true;
         mealPlanRequired.required = true;
+
+        commentsWrap.style.display = "block";
     } else {
         accommodationDetails.style.display = "none";
-        step2Desc.textContent = "No accommodation required. Kindly complete the final details below.";
-        commentsWrap.style.display = "none";
-        comments.value = "";
-        
+        step2Desc.textContent = "No accommodation required. Kindly review the consent and submit.";
+
         resetAccommodationFields();
     }
 }
@@ -671,6 +684,12 @@ function validateStep1() {
 
     step1Fields.forEach(id => {
         const el = document.getElementById(id);
+
+        if (!el) {
+            console.error(`Missing field with id: ${id}`);
+            valid = false;
+            return;
+        }
 
         if (!el.value.trim()) {
             el.style.borderColor = "var(--orange)";
@@ -689,8 +708,235 @@ function validateStep1() {
         }
     });
 
+    const email = document.getElementById("email");
+
+    if (email && email.value.trim() && !isValidEmail(email.value.trim())) {
+        email.style.borderColor = "var(--orange)";
+        email.style.boxShadow = "0 0 0 3px rgba(232,92,26,0.15)";
+        valid = false;
+
+        alert("Please enter a valid email address.");
+
+        email.addEventListener("input", () => {
+            email.style.borderColor = "";
+            email.style.boxShadow = "";
+        }, { once: true });
+    }
+
     return valid;
 }
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+const countries = [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Antigua and Barbuda",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cabo Verde",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Central African Republic",
+    "Chad",
+    "Chile",
+    "China",
+    "Colombia",
+    "Comoros",
+    "Congo",
+    "Costa Rica",
+    "Côte d'Ivoire",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czech Republic",
+    "Democratic Republic of the Congo",
+    "Denmark",
+    "Djibouti",
+    "Dominica",
+    "Dominican Republic",
+    "Ecuador",
+    "Egypt",
+    "El Salvador",
+    "Equatorial Guinea",
+    "Eritrea",
+    "Estonia",
+    "Eswatini",
+    "Ethiopia",
+    "Fiji",
+    "Finland",
+    "France",
+    "Gabon",
+    "Gambia",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Grenada",
+    "Guatemala",
+    "Guinea",
+    "Guinea-Bissau",
+    "Guyana",
+    "Haiti",
+    "Honduras",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Israel",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kiribati",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Laos",
+    "Latvia",
+    "Lebanon",
+    "Lesotho",
+    "Liberia",
+    "Libya",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Madagascar",
+    "Malawi",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Marshall Islands",
+    "Mauritania",
+    "Mauritius",
+    "Mexico",
+    "Micronesia",
+    "Moldova",
+    "Monaco",
+    "Mongolia",
+    "Montenegro",
+    "Morocco",
+    "Mozambique",
+    "Myanmar",
+    "Namibia",
+    "Nauru",
+    "Nepal",
+    "Netherlands",
+    "New Zealand",
+    "Nicaragua",
+    "Niger",
+    "Nigeria",
+    "North Korea",
+    "North Macedonia",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Palau",
+    "Palestine",
+    "Panama",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Rwanda",
+    "Saint Kitts and Nevis",
+    "Saint Lucia",
+    "Saint Vincent and the Grenadines",
+    "Samoa",
+    "San Marino",
+    "Sao Tome and Principe",
+    "Saudi Arabia",
+    "Senegal",
+    "Serbia",
+    "Seychelles",
+    "Sierra Leone",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Solomon Islands",
+    "Somalia",
+    "South Africa",
+    "South Korea",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Suriname",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Taiwan",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "Timor-Leste",
+    "Togo",
+    "Tonga",
+    "Trinidad and Tobago",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Tuvalu",
+    "Uganda",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Vatican City",
+    "Venezuela",
+    "Vietnam",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe"
+];
+
+const countrySelect = document.getElementById("country");
+
+countries.forEach(country => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    countrySelect.appendChild(option);
+});
 
 nextBtn.addEventListener("click", () => {
     if (!validateStep1()) return;
@@ -715,5 +961,6 @@ mealPlanRequired.addEventListener("change", () => {
 </script>
 
 <script type="module" src="script.js"></script>
+
 </body>
 </html>

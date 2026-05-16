@@ -17,7 +17,6 @@ const accommodationFilter = document.getElementById("accommodationFilter");
 const mealPlanFilter = document.getElementById("mealPlanFilter");
 
 const SESSION_LIMIT = 15 * 60 * 1000; // 15 minutes
-// const loginTime = Number(localStorage.getItem("btp_admin_login_time"));
 
 let allData = [];
 let unsubscribe = null;
@@ -45,7 +44,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     loadData();
-});;
+});
 
 // Load live Firestore data
 function loadData() {
@@ -61,6 +60,7 @@ function loadData() {
                 });
             });
 
+            // Newest first
             allData.sort((a, b) => {
                 const timeA = a.timestamp?.toDate ? a.timestamp.toDate() : new Date(0);
                 const timeB = b.timestamp?.toDate ? b.timestamp.toDate() : new Date(0);
@@ -68,7 +68,6 @@ function loadData() {
             });
 
             populateCountryFilter();
-            updateStats();
             applyFilters();
         },
         (error) => {
@@ -76,7 +75,7 @@ function loadData() {
 
             tableBody.innerHTML = `
                 <tr>
-                    <td colspan="12" style="text-align:center; padding:24px; color:#e85c1a;">
+                    <td colspan="13" style="text-align:center; padding:24px; color:#e85c1a;">
                         Unable to load registrations. Please check your login session or Firestore rules.
                     </td>
                 </tr>
@@ -85,14 +84,16 @@ function loadData() {
     );
 }
 
-// Populate country filter
+// Populate country filter without duplicates
 function populateCountryFilter() {
     const selectedValue = countryFilter.value || "all";
 
     countryFilter.innerHTML = `<option value="all">All</option>`;
 
     const countries = [...new Set(
-        allData.map(d => d.country).filter(Boolean)
+        allData
+            .map(d => d.country)
+            .filter(Boolean)
     )].sort();
 
     countries.forEach(country => {
@@ -105,7 +106,7 @@ function populateCountryFilter() {
     countryFilter.value = selectedValue;
 }
 
-// Apply filters
+// Apply filters and update stats based on filtered data
 function applyFilters() {
     const countryValue = countryFilter.value;
     const accommodationValue = accommodationFilter.value;
@@ -126,16 +127,17 @@ function applyFilters() {
     }
 
     displayData(filteredData);
+    updateStats(filteredData);
 }
 
-// Display table
+// Display table rows
 function displayData(data) {
     tableBody.innerHTML = "";
 
     if (data.length === 0) {
         tableBody.innerHTML = `
             <tr>
-                <td colspan="12" style="text-align:center; padding:24px;">
+                <td colspan="13" style="text-align:center; padding:24px;">
                     No registrations found.
                 </td>
             </tr>
@@ -144,6 +146,16 @@ function displayData(data) {
     }
 
     data.forEach(d => {
+        const firstName =
+            d.firstName ||
+            getFirstNameFromOldRecord(d.name) ||
+            "N/A";
+
+        const lastName =
+            d.lastName ||
+            getLastNameFromOldRecord(d.name) ||
+            "N/A";
+
         const meals = Array.isArray(d.mealOptions) && d.mealOptions.length
             ? d.mealOptions.join(", ")
             : "N/A";
@@ -153,7 +165,8 @@ function displayData(data) {
 
         const row = `
             <tr>
-                <td>${escapeHTML(d.name || "N/A")}</td>
+                <td>${escapeHTML(firstName)}</td>
+                <td>${escapeHTML(lastName)}</td>
                 <td>${escapeHTML(d.contact || "N/A")}</td>
                 <td>${escapeHTML(d.email || "N/A")}</td>
                 <td>${escapeHTML(d.country || "N/A")}</td>
@@ -172,18 +185,18 @@ function displayData(data) {
     });
 }
 
-// Update stats
-function updateStats() {
-    document.getElementById("total").textContent = allData.length;
+// Update statistics cards based on current visible/filter data
+function updateStats(data = allData) {
+    document.getElementById("total").textContent = data.length;
 
-    const accommodationCount = allData.filter(d => d.accommodation === "Yes").length;
+    const accommodationCount = data.filter(d => d.accommodation === "Yes").length;
     document.getElementById("accommodationCount").textContent = accommodationCount;
 
-    const mealPlanCount = allData.filter(d => d.mealPlanRequired === "Yes").length;
+    const mealPlanCount = data.filter(d => d.mealPlanRequired === "Yes").length;
     document.getElementById("mealPlanCount").textContent = mealPlanCount;
 }
 
-// Calculate days from check-in/check-out
+// Calculate number of days from check-in/check-out
 function calculateDays(checkInDate, checkOutDate) {
     if (!checkInDate || !checkOutDate) return "N/A";
 
@@ -198,7 +211,7 @@ function calculateDays(checkInDate, checkOutDate) {
     return diffDays;
 }
 
-// Convert timestamp to readable relative time
+// Convert Firestore timestamp to readable relative time
 function timeAgo(timestamp) {
     if (!timestamp || !timestamp.toDate) return "N/A";
 
@@ -219,7 +232,26 @@ function timeAgo(timestamp) {
     return `${days} day(s) ago`;
 }
 
-// Prevent HTML injection
+// Supports old records that used "name"
+function getFirstNameFromOldRecord(fullName) {
+    if (!fullName) return "";
+
+    const parts = fullName.trim().split(" ");
+    return parts[0] || "";
+}
+
+// Supports old records that used "name"
+function getLastNameFromOldRecord(fullName) {
+    if (!fullName) return "";
+
+    const parts = fullName.trim().split(" ");
+
+    if (parts.length <= 1) return "";
+
+    return parts.slice(1).join(" ");
+}
+
+// Prevent HTML injection in table
 function escapeHTML(value) {
     return String(value)
         .replaceAll("&", "&amp;")

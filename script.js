@@ -11,53 +11,86 @@ const submitBtn = document.getElementById("submitBtn");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const country = document.getElementById("country").value;
+    const accommodation = document.getElementById("accommodation").value;
+
+    const checkInDate = document.getElementById("checkInDate").value;
+    const checkOutDate = document.getElementById("checkOutDate").value;
+    const mealPlanRequired = document.getElementById("mealPlanRequired").value;
+
+    const commentsInput = document.getElementById("comments");
+    const consent = document.getElementById("consent").checked;
+
+    const selectedMeals = [];
+
+    document.querySelectorAll(".meal-option:checked").forEach(option => {
+        selectedMeals.push(option.value);
+    });
+
+    if (!firstName || !lastName || !contact || !email || !country || !accommodation) {
+        alert("Please complete all required personal information.");
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    if (!consent) {
+        alert("Please accept the consent before submitting.");
+        return;
+    }
+
+    if (accommodation === "Yes") {
+        if (!checkInDate || !checkOutDate || !mealPlanRequired) {
+            alert("Please complete your accommodation details.");
+            return;
+        }
+
+        if (new Date(checkOutDate) <= new Date(checkInDate)) {
+            alert("Check-out date must be after check-in date.");
+            return;
+        }
+
+        if (mealPlanRequired === "Yes" && selectedMeals.length === 0) {
+            alert("Please select at least one meal option.");
+            return;
+        }
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
     try {
-
-        // Meal options
-        const selectedMeals = [];
-
-        document.querySelectorAll(".meal-option:checked").forEach(option => {
-            selectedMeals.push(option.value);
-        });
-
-        // Form data
         const data = {
-            name: document.getElementById("name").value.trim(),
-            contact: document.getElementById("contact").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            country: document.getElementById("country").value,
-            accommodation: document.getElementById("accommodation").value,
+            firstName,
+            lastName,
+            fullName: `${firstName} ${lastName}`,
+            contact,
+            email,
+            country,
+            accommodation,
 
-            checkInDate:
-                document.getElementById("accommodation").value === "Yes"
-                    ? document.getElementById("checkInDate").value
-                    : "",
+            checkInDate: accommodation === "Yes" ? checkInDate : "",
+            checkOutDate: accommodation === "Yes" ? checkOutDate : "",
 
-            checkOutDate:
-                document.getElementById("accommodation").value === "Yes"
-                    ? document.getElementById("checkOutDate").value
-                    : "",
-
-            mealPlanRequired:
-                document.getElementById("accommodation").value === "Yes"
-                    ? document.getElementById("mealPlanRequired").value
-                    : "No",
-
+            mealPlanRequired: accommodation === "Yes" ? mealPlanRequired : "No",
             mealOptions:
-                document.getElementById("mealPlanRequired").value === "Yes"
+                accommodation === "Yes" && mealPlanRequired === "Yes"
                     ? selectedMeals
                     : [],
 
             comments:
-                document.getElementById("accommodation").value === "Yes"
-                    ? document.getElementById("comments").value.trim()
+                accommodation === "Yes"
+                    ? commentsInput.value.trim()
                     : "",
 
-            consent: document.getElementById("consent").checked,
-
+            consent,
             timestamp: new Date()
         };
 
@@ -70,10 +103,14 @@ form.addEventListener("submit", async (e) => {
         window.location.reload();
 
     } catch (error) {
-        console.error(error);
+        console.error("Submission error:", error);
         alert("Something went wrong. Please try again.");
     }
 
     submitBtn.disabled = false;
     submitBtn.textContent = "Submit Registration ✓";
 });
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
